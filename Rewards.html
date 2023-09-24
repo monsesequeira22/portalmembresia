@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Contenido</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            text-align: center;
+            max-width: 800px;
+            margin: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .image-item {
+            text-align: center;
+        }
+
+        .image-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .back-button {
+            font-size: 18px;
+            padding: 8px 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Bienvenido a nuestro contenido exclusivo!</h1>
+    </header>
+
+    <section class="content">
+        <p>Aquí encontrarás una selección de imágenes increíbles:</p>
+        
+        <div class="image-grid">
+            <!-- Añade tus imágenes aquí -->
+            <div class="image-item">
+                <img src="1.jpg" alt="Imagen 1">
+            </div>
+            <div class="image-item">
+                <img src="2.jpg" alt="Imagen 2">
+            </div>
+            <div class="image-item">
+                <img src="3.jpg" alt="Imagen 3">
+            </div>
+            <div class="image-item">
+                <img src="4.jpg" alt="Imagen 4">
+            </div>
+            <div class="image-item">
+                <img src="5.jpg" alt="Imagen 5">
+            </div>
+            <div class="image-item">
+                <img src="6.jpg" alt="Imagen 6">
+            </div>
+        </div>
+
+        <p class="back-button" onclick="window.history.back();">Volver atrás</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Portal de Membresía</p

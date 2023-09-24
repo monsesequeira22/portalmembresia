@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obtener Datos de Google Sheets</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+</head>
+<body>
+    <h1>Datos de Google Sheets</h1>
+    <ul id="datos-lista"></ul>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyANVngwLU_LMPy3kAYox01RMZjof8NPNnw",
+            authDomain: "portal-membresia.firebaseapp.com",
+            databaseURL: "https://portal_membresia.firebaseio.com",
+            projectId: "portal-membresia",
+            storageBucket: "portal-membresia.appspot.com",
+            messagingSenderId: "371794853907",
+            appId: "1:371794853907:web:e7b8dabc51ca1e31ab7fe6"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database();
+
+        const googleSheetsURL = 'https://docs.google.com/spreadsheets/d/1pn23fItf0b8j1kKPoYGiydTnn_UeXua-LRq0nG5D5Q4/edit?usp=sharing';
+
+        function obtenerDatosDesdeGoogleSheets() {
+            fetch(googleSheetsURL)
+                .then(response => response.text())
+                .then(data => {
+                    const lines = data.split(/\r?\n/);
+                    const datosLista = document.getElementById('datos-lista');
+
+                    lines.forEach(line => {
+                        const parts = line.split(',');
+                        if (parts.length >= 2) {
+                            const correo = parts[0];
+                            const codigo = parts[1];
+                            const listItem = document.createElement('li');
+                            listItem.textContent = `Correo: ${correo}, Código: ${codigo}`;
+                            datosLista.appendChild(listItem);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener datos desde Google Sheets:', error);
+                });
+        }
+        obtenerDatosDesdeGoogleSheets();
+    </script>
+</body>
+</html>
